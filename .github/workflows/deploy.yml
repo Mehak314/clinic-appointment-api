@@ -7,7 +7,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: clini-api-mehak
-  DOTNET_VERSION: '10.0'
+  DOTNET_VERSION: '10.0.x'
 
 jobs:
   build-and-deploy:
