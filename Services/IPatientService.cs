@@ -6,5 +6,8 @@ namespace ClinicAppointmentSystem.Services
     {
         Task AddPatient(Patient patient);
         Task<List<Patient>> GetPatients();
+        Task<Patient> GetPatientById(int id);
+        Task<bool> Update(int id, Patient patient);
+        Task<bool> DeletePatient(int id);
     }
 }

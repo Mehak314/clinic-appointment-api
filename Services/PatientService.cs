@@ -24,5 +24,30 @@ namespace ClinicAppointmentSystem.Services
         {
             return await _repo.GetAllAsync();
         }
+
+        public async Task<Patient> GetPatientById(int id)
+        {
+            var patient = await _repo.GetByIdAsync(id);
+            if (patient == null)
+                throw new Exception("Patient not found");
+            return patient;
+        }
+        public async Task<bool> Update(int id, Patient patient)
+        {
+            var existingPatient = await _repo.GetByIdAsync(id);
+            if (existingPatient == null)
+                return false;
+            existingPatient.Name = patient.Name;
+            existingPatient.Age = patient.Age;
+            return await _repo.UpdateAsync(existingPatient);
+        }
+        public async Task<bool> DeletePatient(int id)
+        {
+            var deleted = await _repo.DeleteAsync(id);
+            if (!deleted)
+                throw new Exception("Patient not found");
+            return deleted;
+        }
+     
     }
-}
+    }
